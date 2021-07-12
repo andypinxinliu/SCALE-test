@@ -4,6 +4,10 @@
 # Single-Cell ATAC-seq analysis via Latent feature Extraction
 ![](https://github.com/jsxlei/SCALE/wiki/png/model.png)
 
+## Code origination
+This is from https://github.com/jsxlei/SCALE
+Our group is trying to use this code if possible
+
 ## News 
 2021.03.23 Our updated version [SCALEX](https://github.com/jsxlei/SCALEX) for single-cell integration is released on [bioRxiv](https://www.biorxiv.org/content/10.1101/2021.04.06.438536v1)!!!  
 2021.03.23 Introduce the select_var_feature from Episcanpy to filter peaks  
