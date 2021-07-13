@@ -1,12 +1,3 @@
-#!/usr/bin/env python
-"""
-# Author: Xiong Lei
-# Created Time : Thu 18 Oct 2018 02:42:37 PM CST
-
-# File Name: setup.py
-# Description:
-
-"""
 from setuptools import setup, find_packages
 
 with open('requirements.txt') as f:
