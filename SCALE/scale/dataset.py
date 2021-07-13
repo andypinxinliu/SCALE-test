@@ -46,21 +46,26 @@ def read_mtx(path):
     return adata
 
 
-# 需要单细胞ATAC的测序文件
+# 需要单细胞ATAC的测序文件，有3种输入，第一种文件夹包含barcode，feature和mtx的，第二种直接mtx
 def load_file(path):  
     """
     Load single cell dataset from file
     """
     if os.path.exists(DATA_PATH+path+'.h5ad'):
         adata = sc.read_h5ad(DATA_PATH+path+'.h5ad')
+    # 这个式直接找文件夹的
     elif os.path.isdir(path): # mtx format
         adata = read_mtx(path)
     elif os.path.isfile(path):
+        
+        #这个是如果文件本身是csv可以读取的矩阵
         if path.endswith(('.csv', '.csv.gz')):
             adata = sc.read_csv(path).T
+        #同这个是变成txt的矩阵格式
         elif path.endswith(('.txt', '.txt.gz', '.tsv', '.tsv.gz')):
             df = pd.read_csv(path, sep='\t', index_col=0).T
             adata = AnnData(df.values, dict(obs_names=df.index.values), dict(var_names=df.columns.values))
+        # 找到路径去读取3个文件
         elif path.endswith(('.mtx', '.mtx.gz')):
             adata = read_mtx(path)
         elif path.endswith('.h5ad'):
